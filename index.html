@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Portal do Cliente</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <img src="logo.png" height="40" />
+    </header>
+
+    <!-- LOGIN -->
+
+    <section id="login" class="login-container">
+      <div class="login-card">
+        <img src="logo.png" class="logo" />
+
+        <h2>Portal do Cliente</h2>
+
+        <input type="email" id="email" placeholder="Email" />
+
+        <input type="password" id="senha" placeholder="Senha" />
+
+        <div class="login-buttons">
+          <button onclick="login()">Entrar</button>
+
+          <button class="btn-outline" onclick="mostrarCadastro()">
+            Criar Conta
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CADASTRO -->
+
+    <section id="cadastro" class="hidden">
+      <h2>Cadastro de Cliente</h2>
+
+      <input type="text" placeholder="Empresa" />
+      <input type="text" placeholder="CNPJ" />
+      <input type="email" placeholder="Email" />
+      <input type="password" placeholder="Senha" />
+
+      <button onclick="cadastrar()">Solicitar Cadastro</button>
+      <button onclick="voltarLogin()">Voltar</button>
+
+      <p id="msgCadastro"></p>
+    </section>
+
+    <!-- DASHBOARD -->
+
+    <section id="dashboard" class="hidden">
+      <nav>
+        <button onclick="abrirTela('debitos')">Débitos</button>
+        <button onclick="abrirTela('creditos')">Créditos</button>
+        <button onclick="abrirTela('pagamentos')">Pagamentos</button>
+        <button onclick="logout()">Sair</button>
+      </nav>
+
+      <!-- DEBITOS -->
+
+      <div id="debitos" class="tela">
+        <h2>Débitos em Aberto</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Nota Fiscal</th>
+              <th>Valor</th>
+              <th>Vencimento</th>
+            </tr>
+          </thead>
+
+          <tbody id="listaDebitos"></tbody>
+        </table>
+
+        <button onclick="gerarPagamento()">Gerar Pagamento</button>
+      </div>
+
+      <!-- CREDITOS -->
+
+      <div id="creditos" class="tela hidden">
+        <h2>Créditos Disponíveis</h2>
+
+        <p id="saldoCredito"></p>
+      </div>
+
+      <!-- PAGAMENTOS -->
+
+      <div id="pagamentos" class="tela hidden">
+        <h2>Histórico de Pagamentos</h2>
+
+        <select onchange="filtrarPagamentos()" id="filtroStatus">
+          <option value="todos">Todos</option>
+          <option value="finalizado">Finalizados</option>
+          <option value="processando">Processando</option>
+          <option value="cancelado">Cancelados</option>
+        </select>
+
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Valor</th>
+              <th>Status</th>
+              <th>Data</th>
+            </tr>
+          </thead>
+
+          <tbody id="listaPagamentos"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- MODAL PAGAMENTO -->
+    <div id="modalPagamento" class="modal hidden">
+      <div class="modal-content">
+        <h2>Pagamento</h2>
+
+        <p id="valorPagamento"></p>
+
+        <div>
+          <label>
+            <input
+              type="checkbox"
+              id="usarCredito"
+              onchange="toggleCredito()"
+            />
+            Utilizar créditos?
+          </label>
+        </div>
+
+        <div id="areaCredito" class="hidden">
+          <p>Saldo disponível: R$ <span id="creditoDisponivel"></span></p>
+
+          <input
+            type="number"
+            id="valorCreditoUsado"
+            placeholder="Valor do crédito a utilizar"
+            oninput="recalcularPagamento()"
+          />
+        </div>
+
+        <p id="valorFinal"></p>
+
+        <canvas id="qrcode"></canvas>
+
+        <button onclick="confirmarPagamento()">Confirmar Pagamento</button>
+        <button onclick="fecharModal()">Cancelar</button>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
