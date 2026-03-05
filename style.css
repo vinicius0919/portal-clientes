@@ -141,21 +141,13 @@ input:focus {
 
 button {
   padding: 12px 16px;
-
   border: none;
-
   border-radius: 10px;
-
   font-weight: 600;
-
   cursor: pointer;
-
   margin-top: 10px;
-
   background: linear-gradient(120deg, var(--laranja), var(--amarelo));
-
   color: white;
-
   transition: all 0.2s ease;
 }
 
@@ -204,19 +196,18 @@ button.logout:hover {
 ========================= */
 
 nav {
-  display: flex;
-
+  display:flex;
   gap: 10px;
-
   margin-bottom: 20px;
-
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 nav button {
   flex: 1;
-
   background: var(--verde);
+  max-width: 100px;
 }
 
 .dashboard {
