@@ -133,7 +133,8 @@
         </div>
 
         <div id="areaCredito" class="hidden">
-          <p>Saldo disponível: R$ <span id="creditoDisponivel"></span></p>
+          <p>Saldo disponível: <br> <strong id="creditoDisponivelRs" >
+         R$ <span id="creditoDisponivel"></span> </strong></p>
 
           <input
             type="number"
@@ -146,9 +147,11 @@
         <p id="valorFinal"></p>
 
         <canvas id="qrcode"></canvas>
+        <div class="buttons-container">
 
-        <button onclick="confirmarPagamento()">Confirmar Pagamento</button>
-        <button onclick="fecharModal()">Cancelar</button>
+          <button onclick="confirmarPagamento()">Confirmar Pagamento</button>
+          <button onclick="fecharModal()">Cancelar</button>
+        </div>
       </div>
     </div>
     <script src="app.js"></script>

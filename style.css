@@ -260,6 +260,10 @@ tr:hover {
   background: #fafafa;
 }
 
+tr.atrasado{
+  color: #d82133;
+  font-weight: 600;
+}
 /* =========================
    CHECKBOX
 ========================= */
@@ -276,37 +280,31 @@ input[type="checkbox"] {
 
 .modal {
   position: fixed;
-
   top: 0;
   left: 0;
-
   width: 100%;
   height: 100%;
 
   background: rgba(0, 0, 0, 0.4);
-
   display: flex;
-
   justify-content: center;
   align-items: center;
-
   padding: 20px;
 }
 
 .modal-content {
   background: white;
-
   border-radius: 16px;
-
   padding: 25px;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   width: 100%;
   max-width: 380px;
-
   text-align: center;
-
   box-shadow: var(--shadow-lg);
-
   animation: modalIn 0.25s ease;
 }
 
@@ -326,9 +324,9 @@ input[type="checkbox"] {
    QR CODE
 ========================= */
 
-canvas {
+/* canvas {
   margin-top: 20px;
-}
+} */
 
 /* =========================
    STATUS
@@ -362,27 +360,50 @@ canvas {
 /* =========================
    SALDO DE CRÉDITO
 ========================= */
-
+#areaCredito{
+  border-top: solid 1px var(--verde-escuro);
+  border-bottom: solid 1px var(--verde-escuro);
+  padding: .8rem;
+  animation: divIn 0.5s ease;
+}
+#creditoDisponivelRs{
+  font-weight: 600;
+  color: var(--verde);
+}
 #saldoCredito {
   background: linear-gradient(120deg, var(--verde), var(--verde-escuro));
-
   color: white;
-
   padding: 15px;
-
   border-radius: var(--radius);
-
   font-size: 18px;
-
   font-weight: 600;
-
   margin-bottom: 15px;
 }
 
 /* =========================
+   PAGAMENTO
+========================= */
+
+#valorFinal{
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--verde);
+}
+/* =========================
    UTILITÁRIOS
 ========================= */
 
+@keyframes divIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .hidden {
   display: none;
 }
