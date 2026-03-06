@@ -5,11 +5,11 @@
 :root {
   --header-height: 70px;
   --verde: #209e57;
-  --verde-escuro: #146437;
+  --verde-escuro: #125a31;
   --laranja: #f08a24;
   --amarelo: #ffc845;
 
-  --fundo: #f6f7f9;
+  --fundo: #209e57;
   --card: #ffffff;
 
   --texto: #333;
@@ -35,13 +35,14 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
 
-  background: var(--fundo);
   color: var(--texto);
 
   min-height: 100vh;
 
   display: flex;
   justify-content: center;
+  background: linear-gradient(135deg, var(--verde), var(--verde-escuro));
+
 }
 
 /* =========================
@@ -71,7 +72,6 @@ section {
   align-items: center;
   justify-content: center;
 
-  background: linear-gradient(135deg, var(--verde), var(--verde-escuro));
 }
 
 /* =========================
@@ -79,10 +79,8 @@ section {
 ========================= */
 
 .login-card {
-  background: var(--card);
-
   padding: 40px;
-
+background-color: var(--card);
   width: 90%;
   max-width: 380px;
 

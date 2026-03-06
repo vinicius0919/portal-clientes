@@ -77,9 +77,6 @@ function carregarDebitos() {
     let vencimento = new Date(`${d.vencimento.slice(6, d.vencimento.length)}-${d.vencimento.slice(3, 5)}-${d.vencimento.slice(0, 2)}`)
     let atrasado = vencimento
        <= dateNow;
-
-    console.log(vencimento, dateNow, atrasado);
-
     tbody.innerHTML += `
 <tr class="${atrasado? 'atrasado':''}" >
 <td><input type="checkbox" value="${d.valor}"></td>
